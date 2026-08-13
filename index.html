@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramona Gómez - Odontología</title>
+
+    <style>
+        /* ==========================
+           CONFIGURACIÓN GENERAL
+        ========================== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; line-height: 1.6; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; }
+        .categorias .categoria h3{ color: #2b2b2b; }
+
+        /* ==========================
+           HEADER
+        ========================== */
+        header { background-color: #2b2b2b; color: white; padding: 20px 8%; }
+        .header-contenido { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .logo h1 { font-size: 28px; }
+        .logo p { font-size: 14px; color: #cccccc; }
+
+        /* ==========================
+           MENU
+        ========================== */
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav a { color: white; font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: #8a8a8a; }
+
+        /* ==========================
+           BANNER
+        ========================== */
+        .banner {
+            min-height: 420px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .banner-contenido { max-width: 900px; }
+        .banner h2 { font-size: 48px; margin-bottom: 15px; }
+        .banner p { font-size: 20px; margin-bottom: 25px; }
+        .boton { display: inline-block; background-color: #555555; color: white; padding: 12px 25px; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+        .boton:hover { background-color: #1a1a1a; transform: translateY(-2px); }
+
+        /* ==========================
+           SECCIONES
+        ========================== */
+        section { padding: 60px 8%; }
+        .titulo-seccion { text-align: center; margin-bottom: 40px; }
+        .titulo-seccion h2 { color: #2b2b2b; font-size: 32px; margin-bottom: 10px; }
+        .titulo-seccion p { color: #666; }
+
+        /* ==========================
+           CATEGORÍAS (Tratamientos y FAQ)
+        ========================== */
+        .categorias { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .categoria { background-color: white; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); transition: 0.3s; }
+        .categoria:hover { transform: translateY(-5px); }
+        .categoria img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 15px; }
+        .categoria .icono { font-size: 45px; margin-bottom: 10px; }
+        .categoria h3 { color: #2b2b2b; margin-bottom: 8px; }
+
+        /* ==========================
+           PRODUCTOS (Galería Antes y Después)
+        ========================== */
+        .productos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .producto { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10); transition: 0.3s; }
+        .producto:hover { transform: translateY(-5px); }
+        .producto img { width: 100%; height: 200px; object-fit: cover; }
+        .producto-contenido { padding: 20px; }
+        .producto h3 { color: #2b2b2b; margin-bottom: 8px; }
+        .producto p { color: #666; font-size: 14px; margin-bottom: 15px; }
+
+        /* ==========================
+           PROMOCIÓN
+        ========================== */
+        .promocion { background-color: #2b2b2b; color: white; text-align: center; }
+        .promocion h2 { font-size: 36px; margin-bottom: 15px; }
+        .promocion p { font-size: 20px; margin-bottom: 20px; }
+
+        /* ==========================
+           NOSOTROS (Profesionalismo)
+        ========================== */
+        .nosotros { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .nosotros img { border-radius: 10px; }
+        .nosotros h2 { color: #2b2b2b; margin-bottom: 20px; font-size: 32px; }
+        .nosotros p { margin-bottom: 15px; }
+
+        /* ==========================
+           CONTACTO
+        ========================== */
+        .contacto { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .informacion-contacto h3 { color: #2b2b2b; margin-bottom: 15px; }
+        .informacion-contacto p { margin-bottom: 10px; }
+        form { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); }
+        .campo { margin-bottom: 15px; }
+        .campo label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .campo input, .campo textarea, .campo select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
+        .campo textarea { resize: vertical; min-height: 120px; }
+        form button { border: none; cursor: pointer; font-size: 16px; }
+
+        /* ==========================
+           FOOTER
+        ========================== */
+        footer { background-color: #1a1a1a; color: white; text-align: center; padding: 30px 20px; }
+        footer h3 { margin-bottom: 10px; }
+        footer p { color: #ddd; font-size: 14px; }
+
+        /* ==========================
+           RESPONSIVE
+        ========================== */
+        @media (max-width: 900px) {
+            .categorias { grid-template-columns: repeat(2, 1fr); }
+            .productos { grid-template-columns: repeat(2, 1fr); }
+            .nosotros, .contacto { grid-template-columns: 1fr; }
+            .header-contenido { flex-direction: column; }
+        }
+        @media (max-width: 600px) {
+            nav ul { flex-direction: column; text-align: center; gap: 10px; }
+            .banner h2 { font-size: 34px; }
+            .banner p { font-size: 17px; }
+            .categorias, .productos { grid-template-columns: 1fr; }
+            section { padding: 40px 5%; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-contenido">
+            <div class="logo">
+                <h1>Ramona Gómez - Odontología Estética & Empresa</h1>
+                <p>Somos tu mejor sonrisa</p>
+            </div>
+            <div class="pestañas"> 
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">La Doctora</a></li>
+                        <li><a href="#tratamientos">Tratamientos</a></li>
+                        <li><a href="#casos">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio">
+
+        <section class="banner">
+            <div class="banner-contenido">
+                <h2>Cuidamos tu salud oral</h2>
+                <p>Odontología estética, ortodoncia y prevención con la mejor tecnología.</p>
+                <a href="#contacto" class="boton">Agendar Valoración</a>
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <div class="nosotros">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Dra Ramona Gómez">
+                </div>
+                <div>
+                    <h2>Dra. Ramona Gómez Vargas</h2>
+                    <p>Soy Odontóloga con más de 7 años de experiencia, dedicada a devolverle la seguridad a mis pacientes a través de su sonrisa.</p>
+                    <p>En nuestra clínica en Riohacha, La Guajira, combinamos la ciencia y el arte para ofrecer tratamientos sin dolor, efectivos y con resultados naturales.</p>
+                    <p><strong>Especialidades:</strong> Odontología Estética, Ortodoncia, Endodoncia y Diseño de Sonrisa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tratamientos">
+            <div class="titulo-seccion">
+                <h2>Tratamientos Odontológicos</h2>
+                <p>Soluciones integrales para todas tus necesidades</p>
+            </div>
+
+            <div class="categorias">
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcp5-zUzTLA24Z6UMUbFcdeuQD_3O_QnIdncRKKtlfoQ&s=10" alt="Ortodoncia">
+                    <h3>Ortodoncia</h3>
+                    <p>Alineación dental con brackets tradicionales o estéticos.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://clinicadentalnunogil.com/wp-content/uploads/2025/10/endodoncia-con-infeccion.jpg" alt="Endodoncia">
+                    <h3>Endodoncia</h3>
+                    <p>Tratamiento de conductos para salvar piezas dañadas.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://www.clinicasgallut.com/wp-content/uploads/2020/09/tipos-diseno-de-sonrisa-bogota-6-1.jpg" alt="Diseño de Sonrisa">
+                    <h3>Diseño de Sonrisa</h3>
+                    <p>Carillas en resina o cerámica para una sonrisa perfecta.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc2dqGNndOk7r0LKSelPfJIm8rFp13ORGLHBlyqLa43A&s=10" alt="Odontología General">
+                    <h3>Odontología General</h3>
+                    <p>Limpiezas, calzas y prevención oral.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6nkEj4nZ75MMuoM_A4AJrW1LJGmirBJbWUQw8BN4kuBEZ3lEvb-YywIA&s=10" alt="Blanqueamiento Dental">
+                    <h3>Blanqueamiento</h3>
+                    <p>Aclara el tono de tus dientes de forma segura.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKemwpWB38j3lD3Akv2-J-br2RMIBKLFH7bZ509-gnIJzbAWtknOXHFk&s=10" alt="Odontopediatría">
+                    <h3>Odontopediatría</h3>
+                    <p>Atención especializada y amigable para niños.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvbdOw0zUUj7hgX_lCx37IdE6By4gazCM9IB5WW2YnaQ&s=10" alt="Periodoncia">
+                    <h3>Periodoncia</h3>
+                    <p>Cuidado y tratamiento de las encías.</p>
+                </article>
+
+                <article class="categoria">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMaGsrm1eVbgd8QcN0XemW-0SEJBadPDbtR7C5D9BccQ&s=10" alt="Cirugía Oral">
+                    <h3>Cirugía Oral</h3>
+                    <p>Extracción de cordales y procedimientos menores.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="casos">
+            <div class="titulo-seccion">
+                <h2>Antes y Después</h2>
+                <p>Conoce los resultados reales de nuestros pacientes</p>
+            </div>
+
+            <div class="productos">
+                <article class="producto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ug6DEbNjz2aKIJrwBl9GZvnOoDespPLn4rpzT4tryg&s=10" alt="Caso Ortodoncia">
+                    <div class="producto-contenido">
+                        <h3>Caso de Ortodoncia</h3>
+                        <p>Corrección de apiñamiento severo tras 18 meses de tratamiento.</p>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVtP_t5712V3bb5vdKlzNdHm0ZnGSIlotdFpIyl6tU8Q&s=10" alt="Caso Carillas">
+                    <div class="producto-contenido">
+                        <h3>Diseño de Sonrisa</h3>
+                        <p>Instalación de 8 carillas en resina de alta estética.</p>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCGnNBB7JQsWNjAroGaZVpzxFB-dIivK2dXks4DhlSNw&s=10" alt="Caso Blanqueamiento">
+                    <div class="producto-contenido">
+                        <h3>Blanqueamiento Dental</h3>
+                        <p>Aclaramiento de 3 tonos en una sola sesión clínica.</p>
+                    </div>
+                </article>
+
+                <article class="producto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7eTlk564iVBvtYcUKjwGWt-kav7mGK0Q5VsVuXUx7vw&s=10" alt="Caso Implante">
+                    <div class="producto-contenido">
+                        <h3>Rehabilitación</h3>
+                        <p>Corona estética para recuperación de pieza frontal.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="promocion">
+            <h2>🎉 Promoción del mes</h2>
+            <p>Amor y Amistad: Descuento especial en Carillas Dentales</p>
+            <a href="#contacto" class="boton">Solicitar Promoción</a>
+        </section>
+
+        <section>
+            <div class="titulo-seccion">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus principales dudas</p>
+            </div>
+
+            <div class="categorias">
+                <article class="categoria">
+                    <div class="icono">❓</div>
+                    <h3>¿Atienden urgencias?</h3>
+                    <p>Sí, brindamos atención prioritaria para dolores agudos o fracturas dentales.</p>
+                </article>
+                <article class="categoria">
+                    <div class="icono">💳</div>
+                    <h3>¿Medios de pago?</h3>
+                    <p>Aceptamos efectivo, tarjetas, Nequi y manejamos crédito directo.</p>
+                </article>
+                <article class="categoria">
+                    <div class="icono">📅</div>
+                    <h3>¿Cada cuánto ir?</h3>
+                    <p>Recomendamos una limpieza y valoración cada 6 meses.</p>
+                </article>
+                <article class="categoria">
+                    <div class="icono">⏳</div>
+                    <h3>¿Cuánto dura una cita?</h3>
+                    <p>Depende del tratamiento, pero una valoración inicial toma unos 30 minutos.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="titulo-seccion">
+                <h2>Contáctanos</h2>
+                <p>Estamos ubicados en el corazón de la ciudad</p>
+            </div>
+
+            <div class="contacto">
+                <div class="informacion-contacto">
+                    <h3>Información de la Clínica</h3>
+                    <p>📍 Calle 12 # 11-102, Riohacha, La Guajira</p>
+                    <p>📞 304 8203232</p>
+                    <p>📸 Instagram: @ramonagv.sonrisas</p>
+                    <p>🕐 Lunes a Viernes: 8:00 a.m. a 12:00 p.m. y 2:00 p.m. a 6:00 p.m.</p>
+                    <p>🕐 Sábados: 8:00 a.m. a 12:00 p.m.</p>
+                </div>
+
+                <form>
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Ingrese su nombre">
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="Su número">
+                    </div>
+                    <div class="campo">
+                        <label for="motivo">Servicio de interés</label>
+                        <select id="motivo">
+                            <option>Ortodoncia</option>
+                            <option>Endodoncia</option>
+                            <option>Diseño de Sonrisa</option>
+                            <option>Odontología General</option>
+                            <option>Blanqueamiento</option>
+                            <option>Odontopediatría</option>
+                            <option>Periodoncia</option>
+                            <option>Cirugía Oral</option>                            
+                            <option>Urgencia</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="m7ensaje">Mensaje</label>
+                        <textarea id="mensaje" placeholder="Escriba su consulta"></textarea>
+                    </div>
+                    <button type="submit" class="boton">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>Ramona Gómez - Odontología Estética & Empresa</h3>
+        <p>Somos tu mejor sonrisa</p>
+        <p>© 2026 Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
